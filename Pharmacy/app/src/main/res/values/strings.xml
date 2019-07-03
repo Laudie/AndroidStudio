@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Pharmacy</string>
+    <string name="value">Value</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="piva">Piva</string>
+    <string name="maps">Maps</string>
+    <string name="cap">Cap</string>
+</resources>
