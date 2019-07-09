@@ -62,12 +62,13 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.ViewHo
                 @Override
                 public void onClick(View v) {
 
-                    // Open another Activity and pass to it the right city
+                    // Open another Activity and pass to it the right pharmacy
                     Pharmacy f = data.get(getAdapterPosition());
-                    System.out.println(f);
+
 
                     Pharmacy pharmacy = data.get(getAdapterPosition());
                     Intent intent = new Intent(v.getContext(), DetailsActivity.class);
+                    intent.putExtra("name", pharmacy.getDescr());
                     intent.putExtra("address", pharmacy.getAddress());
                     intent.putExtra("Provence", pharmacy.getProv());
                     intent.putExtra("cap", pharmacy.getCap());

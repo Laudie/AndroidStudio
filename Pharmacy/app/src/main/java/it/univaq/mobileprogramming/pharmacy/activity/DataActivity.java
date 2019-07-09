@@ -16,7 +16,7 @@ import it.univaq.mobileprogramming.pharmacy.model.Pharmacy;
 
 public class DataActivity extends AppCompatActivity {
 
-    String result;
+
     private List<Pharmacy> pharmacies = new ArrayList<>();
     private AdapterRecycler adapter;
 
@@ -54,6 +54,6 @@ public class DataActivity extends AppCompatActivity {
             }
 
 
-        }).start();;
+        }).start();
     }
 }

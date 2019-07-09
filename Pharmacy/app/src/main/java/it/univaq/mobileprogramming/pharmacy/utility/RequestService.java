@@ -2,13 +2,8 @@ package it.univaq.mobileprogramming.pharmacy.utility;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.util.Log;
-import android.widget.Button;
-
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +14,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.univaq.mobileprogramming.pharmacy.R;
 import it.univaq.mobileprogramming.pharmacy.database.Database;
 import it.univaq.mobileprogramming.pharmacy.model.Pharmacy;
 
@@ -30,7 +24,6 @@ public class RequestService extends IntentService {
 
     public static final String REQUEST_ACTION = "action";
     public static final String FILTER_REQUEST_DOWNLOAD = "filter_request_download";
-    public static final String EXTRA_SERVER_RESPONSE = "extra_server_response";
 
     public RequestService() {
         super("RequestService");
@@ -80,7 +73,9 @@ public class RequestService extends IntentService {
                     parseLine(line,pharmacies);
 
                 }
-                saveDataInDB(pharmacies);
+                //saveDataInDB(pharmacies);
+                Database.getInstance(getApplicationContext())
+                        .getPharmacyDao().save(pharmacies);
                 System.out.println("COMPLETATO");
                 // Send the response in broadcast to all components of only this application.
                 Intent intent = new Intent(FILTER_REQUEST_DOWNLOAD);

@@ -1,5 +1,6 @@
 package it.univaq.mobileprogramming.pharmacy.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -257,5 +258,11 @@ public class Pharmacy {
         this.address = address;
         this.piva = piva;
         this.codasl = codasl;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

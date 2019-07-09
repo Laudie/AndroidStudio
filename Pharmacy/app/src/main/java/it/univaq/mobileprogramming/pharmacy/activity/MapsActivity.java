@@ -34,7 +34,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         map = googleMap;
         String NamePharmacy = getIntent().getStringExtra("NamePharmacy");
-        String Address = getIntent().getStringExtra("Address");
+        String Address = getIntent().getStringExtra("Adsress");
         String Lat = getIntent().getStringExtra("Lat");
         String Lon = getIntent().getStringExtra("Lon");
 
@@ -53,7 +53,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         markerOptions.position(position);
         markerOptions.title(NamePharmacy);
         markerOptions.snippet(Address);
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
         Marker marker = googleMap.addMarker(markerOptions);
         marker.showInfoWindow();
 

@@ -14,7 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.MapsActivity"></activity>
+        <activity android:name=".activity.MapsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.DetailsActivity" />
+        </activity>
         <activity android:name=".activity.DetailsActivity" />
         <activity android:name=".activity.DataActivity">
             <meta-data

@@ -27,15 +27,16 @@ import it.univaq.mobileprogramming.pharmacy.utility.RequestService;
 import it.univaq.mobileprogramming.pharmacy.utility.Settings;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText editTextpharmacy;
-    private Button buttonSearch;
-    private Button buttonUpdate;
+
+    public EditText editTextpharmacy;
+    public Button buttonSearch;
+    public Button buttonUpdate;
 
 
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-
+            buttonUpdate.setEnabled(true);
             Toast.makeText(getApplicationContext(),"Ok DB Update",Toast.LENGTH_LONG).show();
         }
     };
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void update(View view) {
-
+        buttonUpdate.setEnabled(false);
         clearDataFromDB();
 
         downloadData();
@@ -75,14 +76,13 @@ public class MainActivity extends AppCompatActivity {
 
         // If is the first time you open the app, do a HTTP request to download the data
         if (Settings.loadBoolean(getApplicationContext(), Settings.FIRST_TIME, true)) {
-
+            buttonUpdate.setEnabled(false);
             clearDataFromDB();
 
             downloadData();
 
-        } else {
-
         }
+
         Settings.save(getApplicationContext(), Settings.FIRST_TIME, false);
     }
 
@@ -102,9 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    /**
-     * Clear data from database. The preference defines if you use SQLiteOpenHelper or RoomDatabase
-     */
     private void clearDataFromDB() {
 
         pharmacies.clear();
@@ -124,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
          View parentView = (View) view.getParent();
         EditText text_pharmacy = parentView.findViewById(R.id.text_pharmacy);
         String query = text_pharmacy.getText().toString();
-        if (query != "") {
+        if (!query.equals("")) {
             Intent intent = new Intent(MainActivity.this, DataActivity.class);
             intent.putExtra("query", query);
             startActivity(intent);

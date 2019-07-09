@@ -2,14 +2,12 @@ package it.univaq.mobileprogramming.pharmacy.activity;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 
 import it.univaq.mobileprogramming.pharmacy.R;
-import it.univaq.mobileprogramming.pharmacy.database.Database;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -44,8 +42,8 @@ public class DetailsActivity extends AppCompatActivity {
 
         String Lat = getIntent().getStringExtra("Lat");
         String Lon = getIntent().getStringExtra("Lon");
-        String NamePharmacy = getIntent().getStringExtra("NamePharmacy");
-        String Address = getIntent().getStringExtra("Address");
+        String NamePharmacy = getIntent().getStringExtra("name");
+        String Address = getIntent().getStringExtra("address");
 
         if(Lat.equals("-") || Lon.equals("-"))
         {
@@ -54,12 +52,12 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
 
-        Intent intent = new Intent(view.getContext(),MapsActivity.class);
-        startActivity(intent); intent.putExtra("Lat", Lat);
+        Intent intent = new Intent(view.getContext(),MapsActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("Lat", Lat);
         intent.putExtra("Lon",Lon);
         intent.putExtra("NamePharmacy",NamePharmacy);
         intent.putExtra("Adsress",Address);
-        view.getContext().startActivity(intent);
+        startActivity(intent);
 
     }
 }
